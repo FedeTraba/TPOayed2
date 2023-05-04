@@ -5,9 +5,9 @@ import snippets.productoController.Producto;
 
 public interface IDiccionario {
     void inicializarDiccionario ();
-    void agregar(int id, Producto lista);
-    void eliminar(int id);
-    Producto recuperar(int id);
+    void agregar(String nombre, int cantidad);
+    void eliminar(String nombre);
+    int recuperar(String nombre);
 
     Conjunto identificadores();
 }

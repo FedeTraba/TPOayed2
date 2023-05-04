@@ -7,16 +7,16 @@ import snippets.productoController.Producto;
 public class Diccionario implements IDiccionario {
     //Falta ver si va un array de productos (o linkedlist)
     private class NodoClave{
-        int clave;
-        Producto productos;
+        String nombre;
+        int cantidad;
         NodoClave sig;
     }
     private int id;
     private NodoClave primero;
 
-    private NodoClave Clave2NodoClave(int id){
+    private NodoClave Clave2NodoClave(String nombre){
         NodoClave aux = primero;
-        while(aux != null && aux.clave != id){
+        while(aux != null && !aux.nombre.equals(nombre)){
             aux = aux.sig;
         }
         return aux;
@@ -28,26 +28,26 @@ public class Diccionario implements IDiccionario {
     }
 
     //modificar para que use la variable de clase ID
-    public void agregar(int id, Producto lista) {
+    public void agregar(String nombre, int cantidad) {
         NodoClave nodo = Clave2NodoClave(id);
         if(nodo == null){
             nodo = new NodoClave();
-            nodo.clave = id;
+            nodo.nombre = nombre;
             nodo.sig = primero;
             primero = nodo;
         }
-        nodo.productos = lista;
+        nodo.cantidad += 1;
         id++;
     }
 
 
-    public void eliminar(int id) {
+    public void eliminar(String nombre) {
         if(primero != null){
-            if(primero.clave == id){
+            if(primero.nombre.equals(nombre)){
                 primero = primero.sig;
             } else{
                 NodoClave aux = primero;
-                while(aux.sig != null && aux.sig.clave != id){
+                while(aux.sig != null && !aux.sig.nombre.equals(nombre)){
                     aux = aux.sig;
                 }
                 if(aux.sig != null){
@@ -58,9 +58,9 @@ public class Diccionario implements IDiccionario {
     }
 
 
-    public Producto recuperar(int id) {
-        NodoClave nodo = Clave2NodoClave(id);
-        return nodo.productos;
+    public int recuperar(String nombre) {
+        NodoClave nodo = Clave2NodoClave(nombre);
+        return nodo.cantidad;
     }
 
 
@@ -69,7 +69,7 @@ public class Diccionario implements IDiccionario {
         claves.inicializarConjunto();
         NodoClave aux = primero;
         while(aux != null){
-            claves.agregar(aux.productos);
+            claves.agregar(aux.nombre);
             aux = aux.sig;
         }
         return claves;

@@ -40,20 +40,45 @@ public class LinkedList implements ILinkedList {
         if (head == null)
         {
             nodo.next = null;
-            head = nodo;
         } else {
             nodo.next = head;
-            head = nodo;
         }
+        head = nodo;
     }
 
     /* en proceso */
     public boolean remove(Producto p) {
+        if(head.producto == p){
+            head = head.next;
+            return true;
+        }else{
+            Nodo aux = head;
+            while(aux.next != null && aux.next.producto != p ){
+                aux = aux.next;
+            }
+            if(aux.next != null){
+                aux.next = aux.next.next;
+                return true;
+            }
+        }
         return false;
     }
 
     public Producto pop() {
-        return null;
+        Producto prod;
+        if(head.next == null){
+            prod = head.producto;
+            head = null;
+        }else{
+            Nodo aux = head;
+            while(aux.next.next.next != null){
+                aux = aux.next;
+            }
+            prod = aux.next.next.producto;
+            aux.next = null;
+        }
+        return prod;
+
     }
 
     public boolean listaVacia() {
