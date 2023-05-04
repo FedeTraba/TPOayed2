@@ -4,59 +4,70 @@ import estructuras.conjunto.IConjunto;
 import snippets.productoController.Producto;
 
 public class Conjunto implements IConjunto {
-    private class Nodo{
-       Producto info;
-       Nodo sig;
-    }
-    private Nodo c;
 
+    class Nodo {
+        Producto producto;
+        Nodo next;
+    }
+
+    Nodo head;
 
     public void inicializarConjunto() {
-        c = null;
-
+        head = null;
     }
 
+    public void agregar(Producto producto) {
+        Nodo nodo = new Nodo();
+        nodo.producto = producto;
+        nodo.next = null;
 
-    public void agregar(Producto x) {
-        if (!this.pertenece(x)) {
-            Nodo nuevo = new Nodo();
-            nuevo.info = x;
-            nuevo.sig = c;
-            c = nuevo;
-        }
-
-    }
-
-
-    public Producto elegir() {
-        return c.info;
-    }
-
-
-    public boolean conjuntoVacio() {
-        return c == null;
-    }
-
-
-    public void sacar(Producto x) {
-    if (c !=null) {
-        if(c.info == x){
-            c = c.sig;
+        if (head == null)
+        {
+            head = nodo;
         } else {
-            Nodo aux = c;
-            while (aux.sig != null && aux.sig.info != x)
-                aux = aux.sig;
-            if (aux.sig != null) {
-                aux.sig = aux.sig.sig;
+            if(!pertenece(producto.nombre))
+            {
+                nodo.next = head;
+                head = nodo;
             }
         }
     }
+
+    public Producto elegir() {
+        return null;
     }
 
-    public boolean pertenece(Producto x) {
-        Nodo aux = c;
-        while (aux != null && aux.info != x)
-            aux = aux.sig;
-        return (aux != null);
+    public boolean conjuntoVacio() {
+        return false;
+    }
+
+    public Producto sacar(String nombre) {
+        Producto pro;
+
+        if (head != null)
+        {
+            if(head.producto.nombre.equals(nombre))
+            {
+                pro = head.producto;
+                head = head.next;
+            } else {
+                Nodo aux = head;
+            }
+        }
+        return null;
+    }
+
+    public boolean pertenece(String nombre) {
+        Nodo aux = head;
+
+        while (aux != null)
+        {
+            if (aux.producto.nombre.equals(nombre))
+                return true;
+
+            aux = aux.next;
+        }
+
+        return false;
     }
 }

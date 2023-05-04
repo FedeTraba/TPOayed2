@@ -3,10 +3,9 @@ import snippets.productoController.Producto;
 
 public interface IConjunto {
     void inicializarConjunto();
-    void agregar(Producto x);
+    void agregar(Producto producto);
     Producto elegir();
     boolean conjuntoVacio();
-    void sacar(Producto x);
-    boolean pertenece(Producto x);
-
+    Producto sacar(String nombre);
+    boolean pertenece(String nombre);
 }

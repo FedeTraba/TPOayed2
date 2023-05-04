@@ -1,31 +1,18 @@
-import estructuras.linkedlist.ILinkedList;
-import estructuras.linkedlist.implementacion.LinkedList;
-import snippets.productoController.Producto;
+import snippets.productoController.ProductoController;
 
 public class Main {
     public static void main(String[] args) {
 
-        ILinkedList linkedlist = new LinkedList();
-        linkedlist.inicializarLinkedList();
+        ProductoController pc = new ProductoController();
+        pc.crearProducto("fideos", "prueba 1", 204.21);
+        pc.crearProducto("fideos", "prueba 1", 504.21);
+        pc.crearProducto("fideos2", "prueba 1", 34.21);
+        pc.crearProducto("fideos4", "prueba 1", 104.21);
 
-        Producto newP1 = new Producto();
-        newP1.nombre = "Producto1";
-        newP1.precio = 104;
 
-        linkedlist.unShift(newP1);
+        pc.modificarProduto("fideos4", 424444444);
 
-        Producto newP2 = new Producto();
-        newP2.nombre = "Producto2";
-        newP2.precio = 14;
 
-        linkedlist.unShift(newP2);
-
-        Producto newP3 = new Producto();
-        newP3.nombre = "Producto3";
-        newP3.precio = 11204;
-
-        linkedlist.unShift(newP3);
-
-        System.out.println("Hello world!");
+        System.out.println("sad");
     }
 }
