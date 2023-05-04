@@ -27,5 +27,9 @@ public class Main {
         linkedlist.unShift(newP3);
 
         System.out.println("Hello world!");
+
+
+        ProductoController pc = new ProductoController(); 
+        pc.crearProducto("fideos", "para 52 personas", 291.24); 
     }
 }
