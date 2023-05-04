@@ -50,8 +50,20 @@ public class Conjunto implements IConjunto {
             {
                 pro = head.producto;
                 head = head.next;
+                return pro;
             } else {
                 Nodo aux = head;
+
+                while(aux.next != null && !aux.next.producto.nombre.equals(nombre))
+                    aux = aux.next;
+
+                if(aux.next != null)
+                {
+                    pro = aux.next.producto;
+                    aux.next = aux.next.next;
+                    return pro;
+                }
+
             }
         }
         return null;

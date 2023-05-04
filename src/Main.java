@@ -10,7 +10,7 @@ public class Main {
         pc.crearProducto("fideos4", "prueba 1", 104.21);
 
 
-        pc.modificarProduto("fideos4", 424444444);
+        pc.modificarProduto("fideos2", 424444444);
 
 
         System.out.println("sad");
