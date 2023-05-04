@@ -11,14 +11,14 @@ public class Conjunto implements IConjunto {
     private Nodo c;
 
 
-    public void inicializarConjuto() {
+    public void inicializarConjunto() {
         c = null;
 
     }
 
 
     public void agregar(Producto x) {
-        if (!this.Pertenece(x)) {
+        if (!this.pertenece(x)) {
             Nodo nuevo = new Nodo();
             nuevo.info = x;
             nuevo.sig = c;

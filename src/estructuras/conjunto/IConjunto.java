@@ -2,7 +2,7 @@ package estructuras.conjunto;
 import snippets.productoController.Producto;
 
 public interface IConjunto {
-    void inicializarConjuto();
+    void inicializarConjunto();
     void agregar(Producto x);
     Producto elegir();
     boolean conjuntoVacio();
