@@ -1,7 +1,7 @@
 package snippets.productoController;
 
 public class Producto {
-    private String nombre;
-    private String descripcion;
-    private double precio;
+    public String nombre;
+    public String descripcion;
+    public double precio;
 }
