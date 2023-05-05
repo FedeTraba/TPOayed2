@@ -6,7 +6,7 @@ import snippets.sistemaController.Pedido;
 public class LinkedList implements ILinkedList {
 
     static private class Nodo {
-        Pedido producto;
+        Pedido pedido;
         Nodo next;
     }
 
@@ -18,7 +18,7 @@ public class LinkedList implements ILinkedList {
 
     public void add(Pedido p) { // O(N)
         Nodo nodo = new Nodo();
-        nodo.producto = p;
+        nodo.pedido = p;
         nodo.next = null;
 
         if (head == null) {
@@ -35,7 +35,7 @@ public class LinkedList implements ILinkedList {
 
     public void unShift(Pedido p) {
         Nodo nodo = new Nodo();
-        nodo.producto = p;
+        nodo.pedido = p;
 
         if (head == null)
         {
@@ -48,12 +48,12 @@ public class LinkedList implements ILinkedList {
 
     /* en proceso */
     public boolean remove(Pedido p) {
-        if (head.producto == p){
+        if (head.pedido == p){
             head = head.next;
             return true;
         } else {
             Nodo aux = head;
-            while (aux.next != null && aux.next.producto != p ) {
+            while (aux.next != null && aux.next.pedido != p ) {
                 aux = aux.next;
             }
             if (aux.next != null) {
@@ -67,14 +67,14 @@ public class LinkedList implements ILinkedList {
     public Pedido pop() {
         Pedido prod;
         if (head.next == null) {
-            prod = head.producto;
+            prod = head.pedido;
             head = null;
         } else {
             Nodo aux = head;
             while(aux.next.next.next != null) {
                 aux = aux.next;
             }
-            prod = aux.next.next.producto;
+            prod = aux.next.next.pedido;
             aux.next = null;
         }
         return prod;

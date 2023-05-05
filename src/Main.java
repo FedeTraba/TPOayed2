@@ -16,6 +16,17 @@ public class Main {
 
         SistemaController sc = new SistemaController();
         sc.crearPedido();
+        sc.crearPedido();
+        sc.crearPedido();
+        sc.crearPedido();
+        sc.crearPedido();
+        sc.crearPedido();
+        sc.crearPedido();
+        sc.crearPedido();
+        sc.crearPedido();
+        sc.crearPedido();
+        sc.crearPedido();
 
+        sc.verColaPedidos(4);
     }
 }
