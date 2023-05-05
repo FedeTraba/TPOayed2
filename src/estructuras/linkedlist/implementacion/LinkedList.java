@@ -1,12 +1,12 @@
 package estructuras.linkedlist.implementacion;
 
 import estructuras.linkedlist.ILinkedList;
-import snippets.productoController.Producto;
+import snippets.sistemaController.Pedido;
 
 public class LinkedList implements ILinkedList {
 
     static private class Nodo {
-        Producto producto;
+        Pedido producto;
         Nodo next;
     }
 
@@ -16,7 +16,7 @@ public class LinkedList implements ILinkedList {
         this.head = null;
     }
 
-    public void add(Producto p) { // O(N)
+    public void add(Pedido p) { // O(N)
         Nodo nodo = new Nodo();
         nodo.producto = p;
         nodo.next = null;
@@ -33,7 +33,7 @@ public class LinkedList implements ILinkedList {
         }
     }
 
-    public void unShift(Producto p) {
+    public void unShift(Pedido p) {
         Nodo nodo = new Nodo();
         nodo.producto = p;
 
@@ -47,16 +47,16 @@ public class LinkedList implements ILinkedList {
     }
 
     /* en proceso */
-    public boolean remove(Producto p) {
-        if(head.producto == p){
+    public boolean remove(Pedido p) {
+        if (head.producto == p){
             head = head.next;
             return true;
-        }else{
+        } else {
             Nodo aux = head;
-            while(aux.next != null && aux.next.producto != p ){
+            while (aux.next != null && aux.next.producto != p ) {
                 aux = aux.next;
             }
-            if(aux.next != null){
+            if (aux.next != null) {
                 aux.next = aux.next.next;
                 return true;
             }
@@ -64,21 +64,20 @@ public class LinkedList implements ILinkedList {
         return false;
     }
 
-    public Producto pop() {
-        Producto prod;
-        if(head.next == null){
+    public Pedido pop() {
+        Pedido prod;
+        if (head.next == null) {
             prod = head.producto;
             head = null;
-        }else{
+        } else {
             Nodo aux = head;
-            while(aux.next.next.next != null){
+            while(aux.next.next.next != null) {
                 aux = aux.next;
             }
             prod = aux.next.next.producto;
             aux.next = null;
         }
         return prod;
-
     }
 
     public boolean listaVacia() {

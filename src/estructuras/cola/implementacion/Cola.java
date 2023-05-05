@@ -3,44 +3,42 @@ import estructuras.cola.ICola;
 import snippets.sistemaController.Pedido;
 
 public class Cola implements ICola {
-    static class Nodo {
-        Pedido info;
-        Nodo sig;
+    static private class Nodo {
+        Pedido pedido;
+        Nodo next;
     }
 
-    Nodo primero;
-    Nodo ultimo;
+    Nodo head;
+    Nodo end;
 
     public void inicializarCola() {
-        primero = null;
-        ultimo = null;
+        head = null;
+        end = null;
     }
 
-    public void acolar(Pedido x) {
-        Nodo nuevo = new Nodo();
-        nuevo.info = x;
-        nuevo.sig = null;
+    public void acolar(Pedido pedido) {
+        Nodo nodo = new Nodo();
+        nodo.pedido = pedido;
+        nodo.next = null;
 
-        if (ultimo != null)
-            ultimo.sig = nuevo;
+        if (end != null)
+            end.next = nodo;
 
-        ultimo = nuevo;
+        end = nodo;
 
-        if (primero == null)
-            primero = ultimo;
+        if (head == null)
+            head = end;
     }
 
     public void descolar() {
-        primero = primero.sig;
-        if (primero == null)
-            ultimo = null;
+        head = head.next;
     }
 
-    public boolean colavacia() {
-        return (ultimo == null);
+    public boolean colaVacia() {
+        return (head == null);
     }
 
     public Pedido primero() {
-        return primero.info;
+        return head.pedido;
     }
 }

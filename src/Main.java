@@ -15,8 +15,7 @@ public class Main {
         pc.borrarProducto("fideos2");
 
         SistemaController sc = new SistemaController();
+        sc.crearPedido();
 
-
-        System.out.println("sad");
     }
 }

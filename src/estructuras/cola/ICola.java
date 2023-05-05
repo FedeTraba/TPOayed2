@@ -6,7 +6,6 @@ public interface ICola {
     void inicializarCola();
     void acolar(Pedido x);
     void descolar();
-    boolean colavacia();
+    boolean colaVacia();
     Pedido primero();
-
 }
