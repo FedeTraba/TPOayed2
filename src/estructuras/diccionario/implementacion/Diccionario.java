@@ -5,7 +5,7 @@ import estructuras.diccionario.IDiccionario;
 
 public class Diccionario implements IDiccionario {
     //Falta ver si va un array de productos (o linkedlist)
-    private class NodoClave{
+    static private class NodoClave{
         String nombre;
         int cantidad;
         NodoClave sig;

@@ -1,4 +1,5 @@
 import snippets.productoController.ProductoController;
+import snippets.sistemaController.SistemaController;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +13,10 @@ public class Main {
         pc.modificarProduto("fideos2", 424444444);
 
         pc.borrarProducto("fideos2");
+
+        SistemaController sc = new SistemaController();
+
+
         System.out.println("sad");
     }
 }
