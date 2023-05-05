@@ -27,10 +27,12 @@ public class Main {
         sc.crearPedido();
         sc.crearPedido();
         sc.modificarEstado(2,1);
-        sc.modificarEstado(4,2);
         sc.modificarEstado(5,3);
+        sc.modificarEstado(7,3);
         sc.modificarEstado(2,0);
-        sc.verColaPedidos(4);
-
+        sc.modificarEstado(6, 3);
+        sc.modificarEstado(11, 2);
+        sc.modificarEstado(2,3);
+        sc.verHistorialPedidos();
     }
 }

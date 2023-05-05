@@ -65,20 +65,31 @@ public class LinkedList implements ILinkedList {
     }
 
     public Pedido pop() {
-        Pedido prod;
-        if (head.next == null) {
-            prod = head.pedido;
+        Nodo aux;
+        aux = head;
+        Pedido p;
+
+        if(aux.next == null){
+            p = aux.pedido;
             head = null;
-        } else {
-            Nodo aux = head;
-            while(aux.next.next.next != null) {
-                aux = aux.next;
-            }
-            prod = aux.next.next.pedido;
-            aux.next = null;
+            return p;
         }
-        return prod;
+
+        while(aux.next != null)
+        {
+            if(aux.next.next == null)
+            {
+                p = aux.next.pedido;
+                aux.next = null;
+
+                return p;
+            }
+            aux = aux.next;
+        }
+        return null;
+
     }
+
 
     public boolean listaVacia() {
         return (head == null);

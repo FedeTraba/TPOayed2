@@ -20,7 +20,6 @@ public class SistemaController {
         Pedido nuevoPedido = new Pedido(0);
 
         colaPedidos.acolar(nuevoPedido);
-        historialPedidos.add(nuevoPedido);
     }
 
     private void mostrarInfoPedidos(int id, int estado)
@@ -72,9 +71,10 @@ public class SistemaController {
                 if(!(nuevoEstado < p.estado))
                 {
                     p.estado = nuevoEstado;
-                    if(nuevoEstado == 2 || nuevoEstado == 3){
+                    if(p.estado == 2 || p.estado == 3){
                         historialPedidos.add(p);
                     }
+
                 }
             }
             if(p.estado != 3 && p.estado != 2){
@@ -87,6 +87,18 @@ public class SistemaController {
         while(!aux.colaVacia()){
             colaPedidos.acolar(aux.primero());
             aux.descolar();
+        }
+    }
+    public void verHistorialPedidos(){
+        ILinkedList listaAux = new LinkedList();
+        listaAux.inicializarLinkedList();
+
+        while(!historialPedidos.listaVacia()){
+            Pedido poppeado = historialPedidos.pop();
+            mostrarInfoPedidos(poppeado.pedidoID, poppeado.estado);
+            listaAux.unShift(poppeado);
+
+
         }
     }
 }
