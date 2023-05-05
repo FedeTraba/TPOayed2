@@ -5,7 +5,7 @@ import snippets.productoController.Producto;
 
 public class Conjunto implements IConjunto {
 
-    class Nodo {
+    static class Nodo {
         Producto producto;
         Nodo next;
     }
@@ -34,11 +34,11 @@ public class Conjunto implements IConjunto {
     }
 
     public Producto elegir() {
-        return null;
+        return head.producto;
     }
 
     public boolean conjuntoVacio() {
-        return false;
+        return (head == null);
     }
 
     public Producto sacar(String nombre) {
