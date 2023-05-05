@@ -9,10 +9,9 @@ public class Main {
         pc.crearProducto("fideos2", "prueba 1", 34.21);
         pc.crearProducto("fideos4", "prueba 1", 104.21);
 
-
         pc.modificarProduto("fideos2", 424444444);
 
-
+        pc.borrarProducto("fideos2");
         System.out.println("sad");
     }
 }

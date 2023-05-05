@@ -2,7 +2,6 @@ package estructuras.diccionario.implementacion;
 
 import estructuras.conjunto.implementacion.Conjunto;
 import estructuras.diccionario.IDiccionario;
-import snippets.productoController.Producto;
 
 public class Diccionario implements IDiccionario {
     //Falta ver si va un array de productos (o linkedlist)
@@ -29,7 +28,7 @@ public class Diccionario implements IDiccionario {
 
     //modificar para que use la variable de clase ID
     public void agregar(String nombre, int cantidad) {
-        NodoClave nodo = Clave2NodoClave(id);
+        NodoClave nodo = Clave2NodoClave(nombre);
         if(nodo == null){
             nodo = new NodoClave();
             nodo.nombre = nombre;
@@ -69,7 +68,7 @@ public class Diccionario implements IDiccionario {
         claves.inicializarConjunto();
         NodoClave aux = primero;
         while(aux != null){
-            claves.agregar(aux.nombre);
+           // claves.agregar(aux.nombre);
             aux = aux.sig;
         }
         return claves;

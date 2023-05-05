@@ -19,13 +19,20 @@ public class ProductoController {
 
     public void modificarProduto(String nombre, double precio)
     {
-        Producto pro;
+        Producto productoAux;
 
         if (productos.pertenece(nombre))
         {
-            pro = productos.sacar(nombre);
-            pro.precio = precio;
-            productos.agregar(pro);
+            productoAux = productos.sacar(nombre);
+            productoAux.precio = precio;
+            productos.agregar(productoAux);
         }
     }
+
+    public void borrarProducto(String nombre)
+    {
+        productos.sacar(nombre);
+    }
+
+
 }
