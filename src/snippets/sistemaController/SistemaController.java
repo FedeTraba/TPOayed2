@@ -62,4 +62,31 @@ public class SistemaController {
             copiaCola.descolar();
         }
     }
+    public void modificarEstado(int id, int nuevoEstado)
+    {
+        ICola aux = new Cola();
+        aux.inicializarCola();
+        while(!colaPedidos.colaVacia()){
+            Pedido p = colaPedidos.primero();
+            if(p.pedidoID == id){
+                if(!(nuevoEstado < p.estado))
+                {
+                    p.estado = nuevoEstado;
+                    if(nuevoEstado == 2 || nuevoEstado == 3){
+                        historialPedidos.add(p);
+                    }
+                }
+            }
+            if(p.estado != 3 && p.estado != 2){
+                aux.acolar(p);
+            }
+
+            colaPedidos.descolar();
+
+        }
+        while(!aux.colaVacia()){
+            colaPedidos.acolar(aux.primero());
+            aux.descolar();
+        }
+    }
 }
