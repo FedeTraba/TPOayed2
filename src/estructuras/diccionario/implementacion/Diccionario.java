@@ -1,16 +1,16 @@
 package estructuras.diccionario.implementacion;
 
-import estructuras.conjunto.implementacion.Conjunto;
+import estructuras.conjunto.implementacion.ConjuntoStr;
 import estructuras.diccionario.IDiccionario;
 
 public class Diccionario implements IDiccionario {
-    //Falta ver si va un array de productos (o linkedlist)
+
     static private class NodoClave{
         String nombre;
         int cantidad;
         NodoClave sig;
     }
-    private int id;
+
     private NodoClave primero;
 
     private NodoClave Clave2NodoClave(String nombre){
@@ -22,7 +22,6 @@ public class Diccionario implements IDiccionario {
 
     }
     public void inicializarDiccionario() {
-        id = 0;
         primero = null;
     }
 
@@ -32,11 +31,12 @@ public class Diccionario implements IDiccionario {
         if(nodo == null){
             nodo = new NodoClave();
             nodo.nombre = nombre;
+            nodo.cantidad = cantidad;
             nodo.sig = primero;
             primero = nodo;
+        } else {
+            nodo.cantidad += 1;
         }
-        nodo.cantidad += 1;
-        id++;
     }
 
 
@@ -63,14 +63,16 @@ public class Diccionario implements IDiccionario {
     }
 
 
-    public Conjunto identificadores() {
-        Conjunto claves = new Conjunto();
+    public ConjuntoStr identificadores() {
+        ConjuntoStr claves = new ConjuntoStr();
         claves.inicializarConjunto();
         NodoClave aux = primero;
+
         while(aux != null){
-           // claves.agregar(aux.nombre);
+            claves.agregar(aux.nombre);
             aux = aux.sig;
         }
+
         return claves;
     }
 }

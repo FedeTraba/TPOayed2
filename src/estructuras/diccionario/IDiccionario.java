@@ -1,7 +1,6 @@
 package estructuras.diccionario;
 
-import estructuras.conjunto.implementacion.Conjunto;
-import snippets.productoController.Producto;
+import estructuras.conjunto.implementacion.ConjuntoStr;
 
 public interface IDiccionario {
     void inicializarDiccionario ();
@@ -9,5 +8,5 @@ public interface IDiccionario {
     void eliminar(String nombre);
     int recuperar(String nombre);
 
-    Conjunto identificadores();
+    ConjuntoStr identificadores();
 }

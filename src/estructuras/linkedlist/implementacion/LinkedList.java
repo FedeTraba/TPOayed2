@@ -46,7 +46,7 @@ public class LinkedList implements ILinkedList {
         head = nodo;
     }
 
-    /* en proceso */
+    /* en proceso si no se usa, borrar implementación y método de interfaz */
     public boolean remove(Pedido p) {
         if (head.pedido == p){
             head = head.next;

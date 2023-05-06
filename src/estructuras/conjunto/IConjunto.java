@@ -1,11 +1,10 @@
 package estructuras.conjunto;
-import snippets.productoController.Producto;
 
-public interface IConjunto {
+public interface IConjunto<T> {
     void inicializarConjunto();
-    void agregar(Producto producto);
-    Producto elegir();
+    void agregar(T producto);
+    T elegir();
     boolean conjuntoVacio();
-    Producto sacar(String nombre);
+    T sacar(String nombre);
     boolean pertenece(String nombre);
 }

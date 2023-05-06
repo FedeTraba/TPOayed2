@@ -2,28 +2,33 @@ package snippets.sistemaController;
 
 import estructuras.cola.ICola;
 import estructuras.cola.implementacion.Cola;
+import estructuras.conjunto.IConjunto;
+import estructuras.conjunto.implementacion.ConjuntoStr;
+import estructuras.diccionario.IDiccionario;
 import estructuras.linkedlist.ILinkedList;
 import estructuras.linkedlist.implementacion.LinkedList;
+import snippets.productoController.Producto;
 
 public class SistemaController {
     ICola colaPedidos = new Cola();
     ILinkedList historialPedidos = new LinkedList();
+    IConjunto<Producto> productos;
 
-    public SistemaController()
+    public SistemaController(IConjunto<Producto> productosCtrl)
     {
-        colaPedidos.inicializarCola();
-        historialPedidos.inicializarLinkedList();
+        this.colaPedidos.inicializarCola();
+        this.historialPedidos.inicializarLinkedList();
+        this.productos = productosCtrl;
     }
 
-    public void crearPedido()
+    private Pedido crearPedido()
     {
         Pedido nuevoPedido = new Pedido(0);
-
         colaPedidos.acolar(nuevoPedido);
+        return nuevoPedido;
     }
 
-    private void mostrarInfoPedidos(int id, int estado)
-    {
+    private void mostrarInfoPedidos(int id, int estado, IDiccionario productosPedido) {
         String estadoMostrar = switch (estado) {
             case 0 -> "Pendiente";
             case 1 -> "En preparación";
@@ -32,8 +37,19 @@ public class SistemaController {
             default -> "Indefinido";
         };
 
-        System.out.printf("\n%3s - %6s", "ID", "ESTADO");
-        System.out.printf("\n%3s - %6s \n", id, estadoMostrar);
+        System.out.print("\n--------------------");
+        System.out.printf("\nN°%4s | %s", id, estadoMostrar);
+
+        ConjuntoStr clavesPedido = productosPedido.identificadores();
+
+        while (!clavesPedido.conjuntoVacio())
+        {
+            String nombre = clavesPedido.elegir();
+            System.out.printf("%10sx%s", nombre, productosPedido.recuperar(nombre));
+            clavesPedido.sacar(nombre);
+        }
+
+        System.out.println();
     }
 
     // como mejora, en vez de filtrar los pedidos por "pendientes" damos la opción
@@ -44,13 +60,14 @@ public class SistemaController {
         ICola copiaCola = new Cola();
         copiaCola.inicializarCola();
 
+        System.out.printf("\n%3s | %6s", "PEDIDO", "ESTADO");
         while (!colaPedidos.colaVacia())
         {
             Pedido p = colaPedidos.primero();
             copiaCola.acolar(p);
 
             if (p.estado == filtroEstadoId || filtroEstadoId == 4)
-                mostrarInfoPedidos(p.pedidoID, p.estado);
+                mostrarInfoPedidos(p.pedidoID, p.estado, p.productosEnPedido);
 
             colaPedidos.descolar();
         }
@@ -93,12 +110,33 @@ public class SistemaController {
         ILinkedList listaAux = new LinkedList();
         listaAux.inicializarLinkedList();
 
+        System.out.printf("\n%3s | %6s", "PEDIDO", "ESTADO");
         while(!historialPedidos.listaVacia()){
             Pedido poppeado = historialPedidos.pop();
-            mostrarInfoPedidos(poppeado.pedidoID, poppeado.estado);
+
+            mostrarInfoPedidos(poppeado.pedidoID, poppeado.estado, poppeado.productosEnPedido);
             listaAux.unShift(poppeado);
+        }
+    }
 
+    public void crearPedidoProductos(String descripcionPedido)
+    {
+        Pedido p = null;
+        String[] pedidos = descripcionPedido.split(";");
 
+        for(String pedido: pedidos)
+        {
+            String nombreProducto = pedido.split(",")[0];
+            int cantidad = Integer.parseInt(pedido.split(",")[1].trim());
+
+            if(productos.pertenece(nombreProducto.strip()))
+            {
+                if(p == null)
+                    p = crearPedido();
+
+                p.addProducto(nombreProducto, cantidad);
+            }
+            System.out.println();
         }
     }
 }

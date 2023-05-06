@@ -5,7 +5,7 @@ import estructuras.conjunto.implementacion.Conjunto;
 
 public class ProductoController {
 
-    IConjunto productos = new Conjunto();
+    IConjunto<Producto> productos = new Conjunto();
 
     public ProductoController()
     {
@@ -34,5 +34,7 @@ public class ProductoController {
         productos.sacar(nombre);
     }
 
-
+    public IConjunto<Producto> getProductos() {
+        return productos;
+    }
 }
