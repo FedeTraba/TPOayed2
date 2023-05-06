@@ -14,7 +14,7 @@ public class ProductoController {
 
     public void crearProducto(String nombre, String descripcion, double precio)
     {
-        productos.agregar(new Producto(nombre, descripcion, precio));
+        productos.agregar(new Producto(nombre.toLowerCase(), descripcion, precio));
     }
 
     public void modificarProduto(String nombre, double precio)

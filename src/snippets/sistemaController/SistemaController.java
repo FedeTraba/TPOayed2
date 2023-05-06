@@ -42,17 +42,22 @@ public class SistemaController {
         System.out.printf("\nN°%4s | %s\n", id, estadoMostrar);
 
         ConjuntoStr clavesPedido = productosPedido.identificadores();
+
         double total = 0;
 
         while (!clavesPedido.conjuntoVacio())
         {
             String nombre = clavesPedido.elegir();
             int cantidad = productosPedido.recuperar(nombre);
-            double subtotal = cantidad * productos.sacar(nombre.toLowerCase()).precio;
+            Producto p = productos.sacar(nombre.toLowerCase());
+
+            double subtotal = cantidad * p.precio;
+            productos.agregar(p);
 
             total += subtotal;
             System.out.printf("\n%s x %s = %s", nombre, cantidad, subtotal);
             clavesPedido.sacar(nombre);
+
         }
 
         System.out.println("\n\nTOTAL: " + total);

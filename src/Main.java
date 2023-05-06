@@ -33,8 +33,7 @@ public class Main {
 
         SistemaController sc = new SistemaController(pc.getProductos());
 
-        sc.crearPedidoProductos("Sorrentino con bolognesa, 2; Limonada, 1; Coca grande, 2");
-        sc.crearPedidoProductos("Milanesa con puré, 2; Coca grande, 1; Rabas, 1");
+        sc.crearPedidoProductos("rabas, 3; empanada, 3");
         sc.crearPedidoProductos("Café, 1; Tostado, 4; Empanada, 2; Milanesa con puré, 1; Pepsi grande, 4; Caviar con sushi, 3");
 
         sc.verColaPedidos(4);
