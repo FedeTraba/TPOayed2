@@ -35,7 +35,7 @@ public class Diccionario implements IDiccionario {
             nodo.sig = primero;
             primero = nodo;
         } else {
-            nodo.cantidad += 1;
+            nodo.cantidad += cantidad;
         }
     }
 

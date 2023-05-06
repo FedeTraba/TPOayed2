@@ -46,24 +46,6 @@ public class LinkedList implements ILinkedList {
         head = nodo;
     }
 
-    /* en proceso si no se usa, borrar implementación y método de interfaz */
-    public boolean remove(Pedido p) {
-        if (head.pedido == p){
-            head = head.next;
-            return true;
-        } else {
-            Nodo aux = head;
-            while (aux.next != null && aux.next.pedido != p ) {
-                aux = aux.next;
-            }
-            if (aux.next != null) {
-                aux.next = aux.next.next;
-                return true;
-            }
-        }
-        return false;
-    }
-
     public Pedido pop() {
         Nodo aux;
         aux = head;

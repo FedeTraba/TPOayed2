@@ -116,6 +116,7 @@ public class SistemaController {
             aux.descolar();
         }
     }
+
     public void verHistorialPedidos()
     {
         ILinkedList listaAux = new LinkedList();

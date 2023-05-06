@@ -23,7 +23,7 @@ public class Main {
 
         SistemaController sc = new SistemaController(pc.getProductos());
 
-        sc.crearPedidoProductos("fideos, 4; fideos4, 23; fideos2, 14; pepsi, 24");
+        sc.crearPedidoProductos("fideos, 4; fideos4, 23; fideos2, 14; pepsi, 24; fideos, 402");
 
         sc.verColaPedidos(4);
     }
