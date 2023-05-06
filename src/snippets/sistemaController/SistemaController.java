@@ -28,7 +28,8 @@ public class SistemaController {
         return nuevoPedido;
     }
 
-    private void mostrarInfoPedidos(int id, int estado, IDiccionario productosPedido) {
+    private void mostrarInfoPedidos(int id, int estado, IDiccionario productosPedido)
+    {
         String estadoMostrar = switch (estado) {
             case 0 -> "Pendiente";
             case 1 -> "En preparación";
@@ -38,18 +39,23 @@ public class SistemaController {
         };
 
         System.out.print("\n--------------------");
-        System.out.printf("\nN°%4s | %s", id, estadoMostrar);
+        System.out.printf("\nN°%4s | %s\n", id, estadoMostrar);
 
         ConjuntoStr clavesPedido = productosPedido.identificadores();
+        double total = 0;
 
         while (!clavesPedido.conjuntoVacio())
         {
             String nombre = clavesPedido.elegir();
-            System.out.printf("%10sx%s", nombre, productosPedido.recuperar(nombre));
+            int cantidad = productosPedido.recuperar(nombre);
+            double subtotal = cantidad * productos.sacar(nombre.toLowerCase()).precio;
+
+            total += subtotal;
+            System.out.printf("\n%s x %s = %s", nombre, cantidad, subtotal);
             clavesPedido.sacar(nombre);
         }
 
-        System.out.println();
+        System.out.println("\n\nTOTAL: " + total);
     }
 
     // como mejora, en vez de filtrar los pedidos por "pendientes" damos la opción
@@ -82,35 +88,40 @@ public class SistemaController {
     {
         ICola aux = new Cola();
         aux.inicializarCola();
-        while(!colaPedidos.colaVacia()){
+        while(!colaPedidos.colaVacia())
+        {
             Pedido p = colaPedidos.primero();
-            if(p.pedidoID == id){
+            if(p.pedidoID == id)
+            {
                 if(!(nuevoEstado < p.estado))
                 {
                     p.estado = nuevoEstado;
-                    if(p.estado == 2 || p.estado == 3){
+                    if(p.estado == 2 || p.estado == 3)
+                    {
                         historialPedidos.add(p);
                     }
-
                 }
             }
-            if(p.estado != 3 && p.estado != 2){
+            if(p.estado != 3 && p.estado != 2)
+            {
                 aux.acolar(p);
             }
 
             colaPedidos.descolar();
 
         }
-        while(!aux.colaVacia()){
+        while(!aux.colaVacia())
+        {
             colaPedidos.acolar(aux.primero());
             aux.descolar();
         }
     }
-    public void verHistorialPedidos(){
+    public void verHistorialPedidos()
+    {
         ILinkedList listaAux = new LinkedList();
         listaAux.inicializarLinkedList();
 
-        System.out.printf("\n%3s | %6s", "PEDIDO", "ESTADO");
+        System.out.printf("\n%3s | %6s ", "PEDIDO", "ESTADO");
         while(!historialPedidos.listaVacia()){
             Pedido poppeado = historialPedidos.pop();
 
@@ -126,7 +137,7 @@ public class SistemaController {
 
         for(String pedido: pedidos)
         {
-            String nombreProducto = pedido.split(",")[0];
+            String nombreProducto = pedido.split(",")[0].strip().toLowerCase();
             int cantidad = Integer.parseInt(pedido.split(",")[1].trim());
 
             if(productos.pertenece(nombreProducto.strip()))
@@ -134,9 +145,8 @@ public class SistemaController {
                 if(p == null)
                     p = crearPedido();
 
-                p.addProducto(nombreProducto, cantidad);
+                p.addProducto(nombreProducto.toUpperCase(), cantidad);
             }
-            System.out.println();
         }
     }
 }

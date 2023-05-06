@@ -3,14 +3,19 @@ import snippets.productoController.ProductoController;
 import snippets.sistemaController.SistemaController;
 
 public class Main {
-    public static void main(String[] args) {
-
-        ProductoController pc = new ProductoController();
+    static void creacionProductos(ProductoController pc)
+    {
         pc.crearProducto("fideos", "prueba 1", 204.21);
         pc.crearProducto("fideos", "prueba 1", 504.21);
         pc.crearProducto("fideos2", "prueba 1", 34.21);
         pc.crearProducto("fideos4", "prueba 1", 104.21);
         pc.crearProducto("pepsi", "prueba 1", 1404.21);
+    }
+
+    public static void main(String[] args) {
+
+        ProductoController pc = new ProductoController();
+        creacionProductos(pc);
 
         pc.modificarProduto("fideos2", 424444444);
 
@@ -18,8 +23,7 @@ public class Main {
 
         SistemaController sc = new SistemaController(pc.getProductos());
 
-        sc.crearPedidoProductos("fideos, 4; fideos4, 23; pepsi, 24");
-        //sc.crearPedidoProductos("fideos4, 2; fideos2, 3");
+        sc.crearPedidoProductos("fideos, 4; fideos4, 23; fideos2, 14; pepsi, 24");
 
         sc.verColaPedidos(4);
     }

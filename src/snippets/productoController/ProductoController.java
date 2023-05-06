@@ -34,7 +34,8 @@ public class ProductoController {
         productos.sacar(nombre);
     }
 
-    public IConjunto<Producto> getProductos() {
+    public IConjunto<Producto> getProductos()
+    {
         return productos;
     }
 }
