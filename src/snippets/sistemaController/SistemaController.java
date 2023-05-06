@@ -57,7 +57,6 @@ public class SistemaController {
             total += subtotal;
             System.out.printf("\n%s x %s = %s", nombre, cantidad, subtotal);
             clavesPedido.sacar(nombre);
-
         }
 
         System.out.println("\n\nTOTAL: " + total);
@@ -89,6 +88,7 @@ public class SistemaController {
             copiaCola.descolar();
         }
     }
+
     public void modificarEstado(int id, int nuevoEstado)
     {
         ICola aux = new Cola();

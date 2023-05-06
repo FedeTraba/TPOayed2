@@ -1,0 +1,18 @@
+NOMBRE;CATEGORÍA;PRECIO
+limonada;Jugos;1600
+pepsi chica;Gaseosa;350.20
+pepsi grande;Gaseosa;650.20
+coca chica;Gaseosa;350.20
+coca grande;Gaseosa;650.20
+café;Cafetería;400
+té;Cafetería;400
+medialunas;Cafetería;250
+tostado;Cafetería;400
+tostada;Cafetería;100
+rabas;Entrada;2800
+papas fritas;Entrada;800
+empanada;Entrada;100
+milanesa con puré;Plato principal;1700
+sorrentino con bolognesa;Plato principal;2100
+caviar con sushi;Plato principal;50530
+roll de sushi;Plato principal;3500
