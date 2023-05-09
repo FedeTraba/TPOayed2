@@ -14,9 +14,9 @@ public class LinkedList implements ILinkedList {
 
     public void inicializarLinkedList() {
         this.head = null;
-    }
+    } //Operación de tiempo constante (O(1))
 
-    public void add(Pedido p) { // O(N)
+    public void add(Pedido p) { // Operación lineal (O(N))
         Nodo nodo = new Nodo();
         nodo.pedido = p;
         nodo.next = null;
@@ -33,7 +33,7 @@ public class LinkedList implements ILinkedList {
         }
     }
 
-    public void unShift(Pedido p) {
+    public void unShift(Pedido p) { //Operación de tiempo constante (O(1))
         Nodo nodo = new Nodo();
         nodo.pedido = p;
 
@@ -46,7 +46,7 @@ public class LinkedList implements ILinkedList {
         head = nodo;
     }
 
-    public Pedido pop() {
+    public Pedido pop() { //Operación lineal (O(N))
         Nodo aux;
         aux = head;
         Pedido p;
@@ -75,5 +75,5 @@ public class LinkedList implements ILinkedList {
 
     public boolean listaVacia() {
         return (head == null);
-    }
+    } //Operación de tiempo constante (O(1))
 }

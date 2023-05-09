@@ -14,21 +14,21 @@ public class SistemaController {
     ILinkedList historialPedidos = new LinkedList();
     IConjunto<Producto> productos;
 
-    public SistemaController(IConjunto<Producto> productosCtrl)
+    public SistemaController(IConjunto<Producto> productosCtrl) // Operación de tiempo constante (O(1)).
     {
         this.colaPedidos.inicializarCola();
         this.historialPedidos.inicializarLinkedList();
         this.productos = productosCtrl;
     }
 
-    private Pedido crearPedido()
+    private Pedido crearPedido() //Operación de tiempo constante (O(1)).
     {
         Pedido nuevoPedido = new Pedido(0);
         colaPedidos.acolar(nuevoPedido);
         return nuevoPedido;
     }
 
-    private void mostrarInfoPedidos(int id, int estado, IDiccionario productosPedido)
+    private void mostrarInfoPedidos(int id, int estado, IDiccionario productosPedido) //Operación lineal (O(N)).
     {
         String estadoMostrar = switch (estado) {
             case 0 -> "Pendiente";
@@ -65,7 +65,7 @@ public class SistemaController {
     // como mejora, en vez de filtrar los pedidos por "pendientes" damos la opción
     // al usuario de optar el filtro de los pedidos que desea ver. En caso de querer ver todos los pedidos
     // que están en la cola, tendrá que elegir el identificador "4".
-    public void verColaPedidos(int filtroEstadoId) // complejidad temporal O(2N)
+    public void verColaPedidos(int filtroEstadoId) // Operación lineal (O(N)).
     {
         ICola copiaCola = new Cola();
         copiaCola.inicializarCola();
@@ -89,7 +89,7 @@ public class SistemaController {
         }
     }
 
-    public void modificarEstado(int id, int nuevoEstado)
+    public void modificarEstado(int id, int nuevoEstado) // Operación lineal (O(N))
     {
         ICola aux = new Cola();
         aux.inicializarCola();
@@ -122,7 +122,7 @@ public class SistemaController {
         }
     }
 
-    public void verHistorialPedidos()
+    public void verHistorialPedidos() // Operación lineal (O(N)).
     {
         ILinkedList listaAux = new LinkedList();
         listaAux.inicializarLinkedList();
@@ -136,7 +136,7 @@ public class SistemaController {
         }
     }
 
-    public void crearPedidoProductos(String descripcionPedido)
+    public void crearPedidoProductos(String descripcionPedido) //Operación lineal (O(N)).
     {
         Pedido p = null;
         String[] pedidos = descripcionPedido.split(";");

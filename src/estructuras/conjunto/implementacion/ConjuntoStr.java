@@ -12,9 +12,9 @@ public class ConjuntoStr implements IConjunto<String> {
 
     public void inicializarConjunto() {
         head = null;
-    }
+    } //Operación de tiempo constante (O(1))
 
-    public void agregar(String clave) {
+    public void agregar(String clave) { //Operación lineal (O(n)).
         Nodo nodo = new Nodo();
         nodo.clave = clave;
         nodo.next = null;
@@ -33,13 +33,13 @@ public class ConjuntoStr implements IConjunto<String> {
 
     public String elegir() {
         return head.clave;
-    }
+    } //Operación de tiempo constante (O(1)).
 
     public boolean conjuntoVacio() {
         return (head == null);
-    }
+    } // Operación de tiempo constante (O(1)).
 
-    public String sacar(String nombre) {
+    public String sacar(String nombre) { //Operación lineal (O(n)).
         String pro;
 
         if (head != null)
@@ -67,7 +67,7 @@ public class ConjuntoStr implements IConjunto<String> {
         return null;
     }
 
-    public boolean pertenece(String nombre) {
+    public boolean pertenece(String nombre) { //Operación lineal (O(n)).
         Nodo aux = head;
 
         while (aux != null)
