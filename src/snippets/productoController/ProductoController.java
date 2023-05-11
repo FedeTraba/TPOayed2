@@ -39,7 +39,7 @@ public class ProductoController {
         productos.sacar(nombre);
     } //Operación lineal (O(n))
 
-    void cargarProductos() // Operación lineal (O(N))
+    void cargarProductos() // Operación lineal (O(N ** 2))
     {
         String currentDirectory = System.getProperty("user.dir");
         try {
