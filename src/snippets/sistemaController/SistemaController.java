@@ -65,7 +65,7 @@ public class SistemaController {
     // como mejora, en vez de filtrar los pedidos por "pendientes" damos la opción
     // al usuario de optar el filtro de los pedidos que desea ver. En caso de querer ver todos los pedidos
     // que están en la cola, tendrá que elegir el identificador "4".
-    public void verColaPedidos(int filtroEstadoId) // Operación cuadrática (O(N ** 2)).
+    public void verColaPedidos(int filtroEstadoId) // Operación cuadrática (O(N ** 3)).
     {
         ICola copiaCola = new Cola();
         copiaCola.inicializarCola();
