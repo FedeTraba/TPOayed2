@@ -25,7 +25,6 @@ public class Diccionario implements IDiccionario {
         primero = null;
     }
 
-    //modificar para que use la variable de clase ID
     public void agregar(String nombre, int cantidad) {
         NodoClave nodo = Clave2NodoClave(nombre);
         if(nodo == null){

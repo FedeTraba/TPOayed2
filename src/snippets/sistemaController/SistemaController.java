@@ -122,6 +122,7 @@ public class SistemaController {
         }
     }
 
+    //Devolver a historialPedidos??
     public void verHistorialPedidos() // Operación lineal (O(N ** 2)).
     {
         ILinkedList listaAux = new LinkedList();
@@ -133,6 +134,9 @@ public class SistemaController {
 
             mostrarInfoPedidos(poppeado.pedidoID, poppeado.estado, poppeado.productosEnPedido);
             listaAux.unShift(poppeado);
+        }
+        while(!listaAux.listaVacia()){
+            historialPedidos.unShift(listaAux.pop());
         }
     }
 
