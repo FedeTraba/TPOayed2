@@ -18,7 +18,7 @@ public class Pedido {
         cantidadPedidos++;
     }
 
-    public void addProducto(String nombre, int cantidad)
+    public void addProducto(String nombre, int cantidad) // O(N)
     {
         productosEnPedido.agregar(nombre, cantidad);
     }

@@ -28,7 +28,7 @@ public class SistemaController {
         return nuevoPedido;
     }
 
-    private void mostrarInfoPedidos(int id, int estado, IDiccionario productosPedido) //Operación lineal (O(N)).
+    private void mostrarInfoPedidos(int id, int estado, IDiccionario productosPedido) //Operación cúbica (O(N ** 3)).
     {
         String estadoMostrar = switch (estado) {
             case 0 -> "Pendiente";
@@ -65,7 +65,7 @@ public class SistemaController {
     // como mejora, en vez de filtrar los pedidos por "pendientes" damos la opción
     // al usuario de optar el filtro de los pedidos que desea ver. En caso de querer ver todos los pedidos
     // que están en la cola, tendrá que elegir el identificador "4".
-    public void verColaPedidos(int filtroEstadoId) // Operación lineal (O(N)).
+    public void verColaPedidos(int filtroEstadoId) // Operación cuadrática (O(N ** 2)).
     {
         ICola copiaCola = new Cola();
         copiaCola.inicializarCola();
@@ -89,7 +89,7 @@ public class SistemaController {
         }
     }
 
-    public void modificarEstado(int id, int nuevoEstado) // Operación lineal (O(N))
+    public void modificarEstado(int id, int nuevoEstado) // Operación cuadrática (O(N ** 2))
     {
         ICola aux = new Cola();
         aux.inicializarCola();
@@ -122,7 +122,7 @@ public class SistemaController {
         }
     }
 
-    public void verHistorialPedidos() // Operación lineal (O(N)).
+    public void verHistorialPedidos() // Operación lineal (O(N ** 2)).
     {
         ILinkedList listaAux = new LinkedList();
         listaAux.inicializarLinkedList();
@@ -136,7 +136,7 @@ public class SistemaController {
         }
     }
 
-    public void crearPedidoProductos(String descripcionPedido) //Operación lineal (O(N)).
+    public void crearPedidoProductos(String descripcionPedido) //Operación cúbica (O(N ** 3)).
     {
         Pedido p = null;
         String[] pedidos = descripcionPedido.split(";");

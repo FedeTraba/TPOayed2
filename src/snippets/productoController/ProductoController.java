@@ -17,12 +17,12 @@ public class ProductoController {
     }
 
 
-    public void crearProducto(String nombre, String descripcion, double precio) // Operación de tiempo constante (O(1))
+    public void crearProducto(String nombre, String descripcion, double precio) // Operación lineal (O(N))
     {
         productos.agregar(new Producto(nombre.toLowerCase(), descripcion, precio));
     }
 
-    public void modificarProduto(String nombre, double precio) //Operación lineal (O(n))
+    public void modificarProduto(String nombre, double precio) //Operación cúbica (O(N ** 3))
     {
         Producto productoAux;
 
@@ -39,7 +39,7 @@ public class ProductoController {
         productos.sacar(nombre);
     } //Operación lineal (O(n))
 
-    void cargarProductos() // Operación lineal (O(m))
+    void cargarProductos() // Operación lineal (O(N))
     {
         String currentDirectory = System.getProperty("user.dir");
         try {
@@ -67,7 +67,7 @@ public class ProductoController {
         }
     }
 
-    public IConjunto<Producto> getProductos()
+    public IConjunto<Producto> getProductos() //Operación constante (O(1))
     {
         return productos;
     }
