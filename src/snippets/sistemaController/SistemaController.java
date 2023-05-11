@@ -28,7 +28,7 @@ public class SistemaController {
         return nuevoPedido;
     }
 
-    private void mostrarInfoPedidos(int id, int estado, IDiccionario productosPedido) //Operación cúbica (O(N ** 3)).
+    private void mostrarInfoPedidos(int id, int estado, IDiccionario productosPedido) //Operación cúbica (O(N ** 2)).
     {
         String estadoMostrar = switch (estado) {
             case 0 -> "Pendiente";
@@ -45,8 +45,7 @@ public class SistemaController {
 
         double total = 0;
 
-        while (!clavesPedido.conjuntoVacio())
-        {
+`-`        {
             String nombre = clavesPedido.elegir();
             int cantidad = productosPedido.recuperar(nombre);
             Producto p = productos.sacar(nombre.toLowerCase());
