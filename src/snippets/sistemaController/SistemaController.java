@@ -122,7 +122,7 @@ public class SistemaController {
     }
 
     //Devolver a historialPedidos??
-    public void verHistorialPedidos() // Operación lineal (O(N ** 2)).
+    public void verHistorialPedidos() // Operación lineal (O(N ** 3)).
     {
         ILinkedList listaAux = new LinkedList();
         listaAux.inicializarLinkedList();

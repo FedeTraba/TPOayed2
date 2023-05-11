@@ -10,7 +10,7 @@ public class ProductoController {
 
     IConjunto<Producto> productos = new Conjunto();
 
-    public ProductoController() //Operación de tiempo constante (O(1))
+    public ProductoController() //Operación de tiempo constante (O(n))
     {
         productos.inicializarConjunto();
         cargarProductos();
@@ -22,7 +22,7 @@ public class ProductoController {
         productos.agregar(new Producto(nombre.toLowerCase(), descripcion, precio));
     }
 
-    public void modificarProduto(String nombre, double precio) //Operación cúbica (O(N ** 3))
+    public void modificarProduto(String nombre, double precio) //Operación cúbica (O(N))
     {
         Producto productoAux;
 
